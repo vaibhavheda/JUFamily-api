@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const knex = require('knex');
-// const pg = require('pg');
+const pg = require('pg');
 
 
 const db = knex({
