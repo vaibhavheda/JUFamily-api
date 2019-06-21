@@ -16,7 +16,7 @@ const db = knex({
 let app = express();
 //middleware
 app.use(cors());
-app.options('*', cors());
+
 
 app.use(bodyParser.json({}));
 const database = {
@@ -46,14 +46,14 @@ const database = {
 }
 
 app.use(function (req, res, next) {
-    res.Header('Access-Control-Allow-Origin', "*");
-    res.Header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type");
-    res.Header("Access-Control-Allow-Headers", "GET,POST,OPTIONS,PUT,PATCH,DELETE");
-    res.Header('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Origin', "*");
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With,Content-Type");
+    res.setHeader("Access-Control-Allow-Headers", "GET,POST,OPTIONS,PUT,PATCH,DELETE");
+    res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
 //root
-
+app.options('*', cors());
 app.get('/', (req, res) => {
     res.send("this is working");
 });
