@@ -52,10 +52,12 @@ app.all('*', (req, res, next) => {
 });
 //root
 app.get('/', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     res.send("this is working");
 });
 
 app.get('/add-family', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     res.send("okey");
     console.log(database.users[1]);
 })
@@ -63,6 +65,7 @@ app.get('/add-family', (req, res) => {
 //add-family
 
 app.post('/add-family', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     const { name, email, jobtitle, linkedin, image } = req.body;
     console.log(name, email, jobtitle);
     db('member').returning('*').insert({
@@ -76,6 +79,7 @@ app.post('/add-family', (req, res) => {
 });
 
 app.get('/family', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     db.select('*').from('member')
         .then(member => {
             res.json(member);
