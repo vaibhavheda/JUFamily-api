@@ -8,10 +8,8 @@ const knex = require('knex');
 const db = knex({
     client: 'pg',
     connection: {
-        host: 'localhost',
-        user: 'Vaibhav',
-        password: 'root',
-        database: 'family'
+        connectionstring: process.env.DATABASE_URL,
+        ssl: true
     }
 });
 //this is to create server
