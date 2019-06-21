@@ -84,11 +84,12 @@ app.post('/add-family', cors(), (req, res) => {
 })
 
 app.get('/family', cors(), (req, res) => {
-    res.json(database.users);
-    // db.select('*').from('member')
-    //     .then(member => {
-    //         res.json(member);
-    //     });
+    res.json(db.select('*').from('member')
+        .then(member => {
+            return member;
+        })
+    );
+
 })
 
 
