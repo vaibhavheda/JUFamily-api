@@ -8,13 +8,14 @@ const knex = require('knex');
 const db = knex({
     client: 'pg',
     connection: {
-        connectionstring: process.env.DATABASE_URL,
+        connectionString: process.env.DATABASE_URL,
         ssl: true
     }
 });
 //this is to create server
 let app = express();
 //middleware
+app.use(cors());
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', '*');
@@ -27,8 +28,6 @@ app.use(function (req, res, next) {
     }
     next();
 });
-app.use(cors());
-
 
 app.use(bodyParser.json({}));
 const database = {
@@ -88,7 +87,7 @@ app.get('/family', cors(), (req, res) => {
     db.select('*').from('member')
         .then(member => {
             res.json(member);
-        })
+        });
 });
 
 
