@@ -86,7 +86,7 @@ app.post('/add-family', cors(), (req, res) => {
 app.get('/family', cors(), (req, res) => {
     res.json(db.select('*').from('member')
         .then(member => {
-            return member;
+            console.log(member);
         })
     );
 
