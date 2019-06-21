@@ -55,18 +55,18 @@ const database = {
 
 //root
 app.options('*', cors());
-app.get('/', (req, res) => {
+app.get('/', cors9), (req, res) => {
     res.send("this is working");
 });
 
-app.get('/add-family', (req, res) => {
+app.get('/add-family', cors(), (req, res) => {
     res.send("okey");
     console.log(database.users[1]);
 })
 
 //add-family
 
-app.post('/add-family', (req, res) => {
+app.post('/add-family', cors(), (req, res) => {
     const { name, email, jobtitle, linkedin, image } = req.body;
     console.log(name, email, jobtitle);
     db('member').returning('*').insert({
@@ -79,7 +79,7 @@ app.post('/add-family', (req, res) => {
 
 });
 
-app.get('/family', (req, res) => {
+app.get('/family', cors(), (req, res) => {
     db.select('*').from('member')
         .then(member => {
             res.json(member);
