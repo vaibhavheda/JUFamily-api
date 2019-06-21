@@ -89,7 +89,7 @@ app.get('/family', cors(), (req, res) => {
         .then(member => {
             res.json(member);
         })
-})
+});
 
 
 
@@ -99,7 +99,7 @@ app.get('/family', cors(), (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`app is running on ${PORT}`);
-})
+});
 
 /*
 / --> this is working resp
