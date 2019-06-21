@@ -81,16 +81,15 @@ app.post('/add-family', cors(), (req, res) => {
         image: image
     }).then(res.json("Successful"));
 
-});
+})
 
 app.get('/family', cors(), (req, res) => {
-    res.send("okey")
+    res.json(database.users);
     // db.select('*').from('member')
     //     .then(member => {
     //         res.json(member);
     //     });
-});
-
+})
 
 
 
