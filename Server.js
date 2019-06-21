@@ -14,21 +14,11 @@ const db = knex({
         database: 'family'
     }
 });
-
-
-
-
 //this is to create server
 let app = express();
-
-
 //middleware
-
 app.use(cors());
 app.use(bodyParser.json({}));
-
-
-
 const database = {
     users: [
         {
