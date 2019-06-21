@@ -15,7 +15,7 @@ const db = knex({
 //this is to create server
 let app = express();
 //middleware
-app.use(cors());
+// app.use(cors());
 app.use(bodyParser.json({}));
 const database = {
     users: [
@@ -42,7 +42,7 @@ const database = {
         }
     ]
 }
-app.options('*', cors());
+// app.options('*', cors());
 // app.all('*', function (req, res, next) {
 //     var origin = req.get('origin');
 //     res.header('Access-Control-Allow-Origin', origin);
