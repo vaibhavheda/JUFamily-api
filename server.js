@@ -15,7 +15,7 @@ const db = knex({
 //this is to create server
 let app = express();
 //middleware
-// app.use(cors());
+app.use(cors());
 app.use(bodyParser.json({}));
 const database = {
     users: [
@@ -42,22 +42,24 @@ const database = {
         }
     ]
 }
-// app.options('*', cors());
-// app.all('*', function (req, res, next) {
-//     var origin = req.get('origin');
-//     res.header('Access-Control-Allow-Origin', origin);
-//     res.header("Access-Control-Allow-Headers", "X-Requested-With");
-//     res.header('Access-Control-Allow-Headers', 'Content-Type');
-//     next();
-// });
+
+app.use(function (req, res, next) {
+    var origin = req.get('origin');
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With,Content-Type");
+    res.setHeader("Access-Control-Allow-Headers", "GET,POST,OPTIONS,PUT,PATCH,DELETE");
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
 //root
+app.options('*', cors());
 app.get('/', (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Origin", "*");
     res.send("this is working");
 });
 
 app.get('/add-family', (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Origin", "*");
     res.send("okey");
     console.log(database.users[1]);
 })
@@ -65,7 +67,7 @@ app.get('/add-family', (req, res) => {
 //add-family
 
 app.post('/add-family', (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const { name, email, jobtitle, linkedin, image } = req.body;
     console.log(name, email, jobtitle);
     db('member').returning('*').insert({
@@ -79,7 +81,7 @@ app.post('/add-family', (req, res) => {
 });
 
 app.get('/family', (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Origin", "*");
     db.select('*').from('member')
         .then(member => {
             res.json(member);
