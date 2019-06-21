@@ -87,7 +87,7 @@ app.get('/family', cors(), (req, res) => {
     console.log(db);
     db.select('*').from('member')
         .then(member => {
-            req.json(member);
+            res.json(member);
         }
         );
 
