@@ -55,9 +55,9 @@ const database = {
 
 //root
 app.options('*', cors());
-app.get('/', cors9), (req, res) => {
+app.get('/', cors(), (req, res) => {
     res.send("this is working");
-});
+})
 
 app.get('/add-family', cors(), (req, res) => {
     res.send("okey");
