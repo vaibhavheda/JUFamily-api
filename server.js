@@ -63,13 +63,13 @@ app.get('/', cors(), (req, res) => {
     res.send("this is working");
 })
 
-app.get('/add-family', cors(), (req, res) => {
+app.get('/addfamily', cors(), (req, res) => {
     res.send("okey");
 })
 
 //add-family
 
-app.post('/add-family', cors(), (req, res) => {
+app.post('/addfamily', cors(), (req, res) => {
     const { name, email, jobtitle, linkedin, image } = req.body;
     console.log(req.body);
     db('member').insert({
@@ -92,7 +92,7 @@ app.get('/family', cors(), (req, res) => {
 
 })
 
-app.options('/add-family', cors(), (req, res) => {
+app.options('/addfamily', cors(), (req, res) => {
     const { name, email, jobtitle, linkedin, image } = req.body;
     console.log(req.body);
     db('member').insert({
