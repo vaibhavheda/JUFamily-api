@@ -93,6 +93,13 @@ app.get('/family', cors(), (req, res) => {
 
 })
 
+app.options('./family', cors(), (req, res) => {
+    db.select('*').from('member')
+        .then(member => {
+            res.json(member);
+        }
+        );
+})
 
 
 
