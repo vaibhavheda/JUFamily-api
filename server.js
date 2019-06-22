@@ -93,12 +93,17 @@ app.get('/family', cors(), (req, res) => {
 
 })
 
-app.options('./family', cors(), (req, res) => {
-    db.select('*').from('member')
-        .then(member => {
-            res.json(member);
-        }
-        );
+app.options('./add-family', cors(), (req, res) => {
+    const { name, email, jobtitle, linkedin, image } = req.body;
+    console.log(req.body);
+    db('member').insert({
+        name: name,
+        email: email,
+        jobtitle: jobtitle,
+        linkedin: linkedin,
+        image: image
+    }).then(res.json("Successful"));
+
 })
 
 
