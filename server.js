@@ -70,9 +70,9 @@ app.get('/addfamily', cors(), (req, res) => {
 //add-family
 
 app.post('/addfamily', cors(), (req, res) => {
-    const { name, email, jobtitle, linkedin, image } = req.body;
+    const { name, email, jobtitle, linkedin, image } = req.params;
     console.log(req.body);
-    db('member').insert({
+    db('member').returning('*').insert({
         name: name,
         email: email,
         jobtitle: jobtitle,
@@ -95,7 +95,7 @@ app.get('/family', cors(), (req, res) => {
 app.options('/addfamily', cors(), (req, res) => {
     const { name, email, jobtitle, linkedin, image } = req.body;
     console.log(req.body);
-    db('member').insert({
+    db('member').returning('*').insert({
         name: name,
         email: email,
         jobtitle: jobtitle,
