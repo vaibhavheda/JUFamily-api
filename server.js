@@ -73,7 +73,7 @@ app.get('/add-family', cors(), (req, res) => {
 app.post('/add-family', cors(), (req, res) => {
     const { name, email, jobtitle, linkedin, image } = req.body;
     console.log(req.body);
-    db('member').returning('*').insert({
+    db('member').insert({
         name: name,
         email: email,
         jobtitle: jobtitle,
