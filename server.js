@@ -77,7 +77,8 @@ app.post('/addfamily', cors(), (req, res) => {
         email: req.body.email,
         jobtitle: req.body.jobtitle,
         linkedin: req.body.linkedin,
-        image: req.body.image
+        image: req.body.image,
+        insta: req.body.insta
     }).then(res.json("Successful"));
 
 })
@@ -100,7 +101,8 @@ app.options('/addfamily', cors(), (req, res) => {
         email: req.body.email,
         jobtitle: req.body.jobtitle,
         linkedin: req.body.linkedin,
-        image: req.body.image
+        image: req.body.image,
+        insta: req.body.insta
     }).then(res.json("Successful"));
 
 })
