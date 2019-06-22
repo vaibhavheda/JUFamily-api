@@ -65,7 +65,6 @@ app.get('/', cors(), (req, res) => {
 
 app.get('/add-family', cors(), (req, res) => {
     res.send("okey");
-    console.log(database.users[1]);
 })
 
 //add-family
@@ -93,7 +92,7 @@ app.get('/family', cors(), (req, res) => {
 
 })
 
-app.options('./add-family', cors(), (req, res) => {
+app.options('/add-family', cors(), (req, res) => {
     const { name, email, jobtitle, linkedin, image } = req.body;
     console.log(req.body);
     db('member').insert({
